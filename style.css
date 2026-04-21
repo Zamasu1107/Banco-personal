@@ -1,0 +1,250 @@
+#pag-indice {
+    background: linear-gradient(#864BA2, #BF3A30);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#pag-ingreso {
+    background: #F5F5DC; /* Crema suave de su vestido */
+    color: #5D3A3A;      /* Marrón oscuro para el texto */
+    border-color: #8B4513; /* Cuero/Cabello */
+    box-shadow: inset 0 0 20px #C24641;
+    border: solid; 
+    border-radius: 10px;
+}
+
+#pag-cajas{
+    background: linear-gradient(rgba(0, 0, 0, 0.907) 55%, rgba(3, 39, 0, 0.92) 96% );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#card-intro {
+    background: #D1D1F0; /* Lavanda de su chaqueta */
+    color: #1B1B3A;      /* Azul noche para el texto */
+    border-color: #E6E6FA; /* Clarito como el Byakugan */
+    box-shadow: inset 0 0 20px #9B9BCC;
+    border: solid; 
+    border-radius: 10px;
+    margin: auto;
+    width: 65%;
+}
+
+#card-ingreso {
+    background: #F5F5DC; /* Crema suave de su vestido */
+    color: #5D3A3A;      /* Marrón oscuro para el texto */
+    border-color: #8B4513; /* Cuero/Cabello */
+    box-shadow: inset 0 0 20px #C24641;
+    border: solid; 
+    border-radius: 10px;
+    margin: auto;
+    width: 65%;
+}
+
+#card-cajas-ahorros {
+    background: #1A1A1A; /* Negro/Gris muy oscuro */
+    color: #C0C0C0;      /* Gris armadura para el texto */
+    border-color: #2E4D32; /* Verde bosque de su capa */
+    box-shadow: inset 0 0 20px #2ECC71;
+    border: solid; 
+    border-radius: 10px;
+    display: flexbox;
+    margin: auto;
+    width: 65%;
+}
+
+#card-gastos {
+    background: #4A5E8A; /* Azul uniforme */
+    color: #FFFFFF;      /* Texto blanco para lectura clara */
+    border-color: #2D2930; /* Oscuro como su cabello */
+    box-shadow: inset 0 0 20px #E87A90;
+    border: solid; 
+    border-radius: 10px;
+    display: flexbox;
+    margin: auto;
+    width: 65%;
+}
+
+.button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+    transition: 0.3s; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    justify-content: center;
+    text-align: center;
+}
+
+#caja-titu {
+    color: #888888;
+    background-color: #2E4D32;
+}
+
+h2 {
+    
+    text-align: center;
+}
+
+#h2-cajas {
+    color: #888888;
+    text-align: left;
+}
+
+h3 {
+    color: #2ECC71;
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+p {
+    text-align: center;
+    justify-content: center;
+}
+
+table {
+  table-layout: fixed;
+  width: 85%;
+  margin: auto;
+  border-collapse: collapse;
+  border: 3px solid #8B4513;
+  background-color: #FDF5E6; 
+}
+
+th,td {
+    justify-content: center;
+    text-align: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #8B4513;
+    border-left: 1px solid #8B4513;
+}
+
+thead {
+    background-color: #5D3A3A;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #F5E6CC;
+}
+
+tfoot th {
+    background-color: #5D3A3A;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.porcentajes-descrip{
+    display: flex;
+    justify-content: space-between; /* Manda uno a la izquierda y otro a la derecha */
+    margin-top: 5px;
+}
+
+.porcentaje {
+    color: #2ECC71;
+    font-size: 0.90rem;
+    text-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
+}
+
+.total-caja {
+    color: #E0E0E0; /* Gris metálico */
+    font-size: 0.90rem;
+    font-weight: bold;
+}
+
+.desc-cajas{
+    color: #888888;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: left;
+    justify-content: center;
+}
+
+.cajas {
+    background: #1A1C20;
+    border: 1px solid #2E4D32;
+    border-left: 4px solid #2ECC71;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 50%; /* Ancho fijo para consistencia */
+    min-height: 35px;
+}
+
+.cajas-diseño {
+    background: #1A1C20;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.cajas:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+    border-color: #2ECC71;
+}
+
+.bar-baground {
+    border: 10px solid #2E4D32;
+}
+
+.progress-bar {
+    background-color: #31353d;
+    border: 1px solid #2E4D32;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px #000;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #1E8449, #2ECC71);
+    width: 50%;
+    height: 10px;
+}
+
+.despegable {
+    display: none;
+    padding-top: 15px;
+    border-top: 1px solid rgba(46, 204, 113, 0.2); /* Una línea sutil de separación */
+    margin-top: 10px;
+}
+
+.cajas:hover .despegable{
+   display: block;
+}
+
+nav {
+    max-width: 100%;
+    margin: auto;
+    background-color: #1A1A1A;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.menu-horiz {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-horiz > li > a {
+    display: block;
+    padding: 15px 20px;
+    color: #E6E6FA;
+    text-decoration: none;
+}
+
+.menu-horiz > li:hover {
+    background-color: rgb(153, 23, 23);
+}
