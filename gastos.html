@@ -5,7 +5,8 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
+    <body id="pag-gastos">
+        <span><a id="regr-gasto" href="index.html">Regresar al Menu</a></span>
         <h1>Gastos Personales</h1>
         <nav>
             <ul class="menu-horiz">
@@ -19,31 +20,361 @@
         </nav>
 
         <main id="paginas-totales">
-            <section id="vista-general">
-                <h2>Resumen de gastos</h2>
+            <section id="vista-general" class="seccion-tarjeta">
+                <h2 class="titulo-gast">Resumen de tus gastos</h2>
+                <p id="deuda-total">3400/7400$</p>
 
+                <div class="progress-barg" id="gastos-totales">
+                    <div class="progress-fillg" id="gastos-totalesf">  
+                    </div>
+                </div>
+
+                <div class="contenedor">
+                    <div class="chips">
+                        <img src="img/banamex.jpg" width="70" height="70">
+                        <span>Banamex</span>
+                    </div>
+                    <div class="chips">
+                        <img src="img/bbva.jpg" width="70" height="70">
+                        <span>BBVA</span>
+                    </div>
+                    <div class="chips">
+                        <img src="img/nu.png" width="70" height="70">
+                        <span>Nu</span>
+                    </div>
+                    <div class="chips"> 
+                        <img src="img/sears.png" width="70" height="70">
+                        <span>Sears</span>
+                    </div>
+                </div>
             </section>
+            <br>
+            <section id="vista-nu" class="seccion-tarjeta ">
+                <h2 class="titulo-gast">Resumen de Nu</h2>
+                <div class="descripcion-bar">
+                    <span id="rojo">Deuda Mensual total: 1800</span>
+                    <span id="verde">Credito total: 12,000</span>
+                </div>
 
-            <section id="vista-nu">
-                <h2>Resumen de Nu</h2>
+                <div class="progress-barg barra-deudas">
+                        <div class="progress-fillg barra-deudasf">  
+                        </div>
+                    </div>
                 
+                <ul>
+                    <li>
+                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
+                        <p class="descrip-g">Saldo a meses: 689</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Figura</h3>
+                        <p class="descrip-g">Saldo a meses: 472</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Crunchyroll</h3>
+                        <p class="descrip-g">Saldo a meses: 159</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Tarjeta de video</h3>
+                        <p class="descrip-g">Saldo a meses: 888</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </section>
 
-            <!-- <section id="vista-bbva"> 
-                <h2>Resumen de BBVA</h2>
-            </section></a>
+            <section id="vista-bbva" class="seccion-tarjeta"> 
+                <h2 class="titulo-gast">Resumen de BBVA</h2>
+                <div class="descripcion-bar">
+                    <span id="rojo">Deuda Mensual total: 1800</span>
+                    <span id="verde">Credito total: 12,000</span>
+                </div>
 
-            <section id="vista-banamex">
-                <h2>Resumen de Banamex</h2>
+                <div class="progress-barg barra-deudas">
+                        <div class="progress-fillg barra-deudasf">  
+                        </div>
+                    </div>
+                
+                <ul>
+                    <li>
+                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
+                        <p class="descrip-g">Saldo a meses: $628.67</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Predur</h3>
+                        <p class="descrip-g">Saldo $1,020</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>1/1 (Abril)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">GamePass</h3>
+                        <p class="descrip-g">Saldo a meses: $219</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>Indefinido</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </section>
 
-            <section id="vista-sears">
-                <h2>Resumen de Sears</h2>
+            <section id="vista-banamex" class="seccion-tarjeta">
+                <h2 class="titulo-gast">Resumen de Banamex</h2>
+                <div class="descripcion-bar">
+                    <span id="rojo">Deuda Mensual total: 1800</span>
+                    <span id="verde">Credito total: 12,000</span>
+                </div>
+
+                <div class="progress-barg barra-deudas">
+                        <div class="progress-fillg barra-deudasf">  
+                        </div>
+                    </div>
+                
+                <ul>
+                    <li>
+                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
+                        <p class="descrip-g">Saldo a meses: 689</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Figura</h3>
+                        <p class="descrip-g">Saldo a meses: 472</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Crunchyroll</h3>
+                        <p class="descrip-g">Saldo a meses: 159</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Tarjeta de video</h3>
+                        <p class="descrip-g">Saldo a meses: 888</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </section>
 
-            <section id="vista-otros">
-                <h2>Resumen de otros</h2>
-            </section>-->
+            <section id="vista-sears" class="seccion-tarjeta">
+                <h2 class="titulo-gast">Resumen de Sears</h2>
+                <div class="descripcion-bar">
+                    <span id="rojo">Deuda Mensual total: 1800</span>
+                    <span id="verde">Credito total: 12,000</span>
+                </div>
+
+                <div class="progress-barg barra-deudas">
+                        <div class="progress-fillg barra-deudasf">  
+                        </div>
+                    </div>
+                
+                <ul>
+                    <li>
+                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
+                        <p class="descrip-g">Saldo a meses: 689</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Figura</h3>
+                        <p class="descrip-g">Saldo a meses: 472</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Crunchyroll</h3>
+                        <p class="descrip-g">Saldo a meses: 159</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Tarjeta de video</h3>
+                        <p class="descrip-g">Saldo a meses: 888</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="vista-otros" class="seccion-tarjeta">
+                <h2 class="titulo-gast">Resumen de otros</h2>
+                <div class="descripcion-bar">
+                    <span id="rojo">Deuda Mensual total: 1800</span>
+                    <span id="verde">Credito total: 12,000</span>
+                </div>
+
+                <div class="progress-barg barra-deudas">
+                        <div class="progress-fillg barra-deudasf">  
+                        </div>
+                    </div>
+                
+                <ul>
+                    <li>
+                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
+                        <p class="descrip-g">Saldo a meses: 689</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Figura</h3>
+                        <p class="descrip-g">Saldo a meses: 472</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Crunchyroll</h3>
+                        <p class="descrip-g">Saldo a meses: 159</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="titulo-tarj">Tarjeta de video</h3>
+                        <p class="descrip-g">Saldo a meses: 888</p>
+                        <div class="descrip-deuda">
+                            <span>Tiempo Restante:</span>
+                            <span>4/6 (Junio)</span>
+                        </div>
+
+                        <div class="progress-barg">
+                            <div class="progress-fillg">  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
         </main>
     </body>
 </html>
