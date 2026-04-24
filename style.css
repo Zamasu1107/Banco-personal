@@ -39,7 +39,7 @@
 }
 
 #card-ingreso {
-    background: #F5F5DC; /* Crema suave de su vestido */
+    background: #d5d5bf; /* Crema suave de su vestido */
     color: #5D3A3A;      /* Marrón oscuro para el texto */
     border-color: #8B4513; /* Cuero/Cabello */
     box-shadow: inset 0 0 20px #C24641;
@@ -47,6 +47,56 @@
     border-radius: 10px;
     margin: auto;
     width: 65%;
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Apila los elementos */
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.2); /* Línea divisoria discreta */
+}
+
+input[type="number"], 
+input[type="text"], 
+input[list] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#card-ingreso form label {
+    padding: 5px;
+    color: #5D3A3A;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+#card-ingreso input[type="submit"] {
+    background-color: #C24641;
+    color: white;
+}
+
+#card-ingreso input[type="submit"]:hover {
+    background-color: #8B4513; /* Cambia a café al pasar el mouse */
+}
+
+.despegable-menu {
+    display: none;
+    padding-top: 15px;
+    margin-top: 10px;
 }
 
 #card-cajas-ahorros {
@@ -73,11 +123,115 @@
     width: 65%;
 }
 
-.button:hover {
+#card-gastos form label {
+    padding: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #010f2f;
+}
+
+#card-gastos input:focus {
+    outline: none;
+    border: 2px solid #E87A90; /* Brillo rosa de Nagatoro */
+    box-shadow: 0 0 5px #E87A90;
+    transition: all 0.3s ease;
+}
+
+#card-gastos input[type="submit"] {
+    background-color: #4A5E8A;
+    color: white;
+    box-shadow: 3px 3px 0px #E87A90; /* Sombra estilo sticker */
+    grid-column: span 2; /* El botón de enviar ocupa todo el ancho abajo */
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center; /* Centra los dos botones */
+    gap: 30px;               /* Espacio entre Contado y MSI */
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2d4988; /* Azul uniforme */
+    transition: 0.3s;
+}
+
+/* Ocultamos el radio original */
+.radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4A5E8A;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* El círculo interno cuando está seleccionado (Sonrojo de Nagatoro) */
+.radio-option input[type="radio"]:checked {
+    border-color: #E87A90; /* Rosa */
+    background-color: #FDFDFD;
+}
+
+.radio-option input[type="radio"]:checked::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #E87A90;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* Efecto hover juguetón */
+.radio-option:hover {
+    color: #E87A90;
+    transform: scale(1.05);
+}
+
+#checkHabilitar:checked ~ #campoHabilitar {
+  /* Al deshabilitar el "disabled", el campo se vuelve editable */
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Opcional: Estilo cuando está deshabilitado */
+#campoHabilitar:disabled {
+  opacity: 0.5;
+  pointer-events: none; /* Evita clics */
+}
+
+.button:hover{
     filter: brightness(1.1);
     cursor: pointer;
     transition: 0.3s; 
 }
+
+.button:hover .despegable-menu {
+    display: block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;            /* Espacio entre cada input/label */
+    padding: 20px;        /* Espacio para que no choque con los bordes de la card */
+    margin: 0 auto;       /* Centra el formulario horizontalmente */
+    max-width: 85%;       /* Evita que el form sea demasiado ancho */
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+
 
 a {
     text-decoration: none;
@@ -87,6 +241,10 @@ a {
 h1 {
     justify-content: center;
     text-align: center;
+}
+
+#gasto-titu {
+    color: #2d54a7;
 }
 
 #caja-titu {
@@ -147,12 +305,14 @@ p {
     justify-content: space-between; /* Manda uno a la izquierda y otro a la derecha */
     margin-top: 5px;
     font-size: 1.2rem;
+    padding-top: 10px;
 }
 
 .descrip-g {
-    text-align: left;
+    display: flex;
     border-bottom: 2px solid rgba(255, 0, 0, 0.392);
     border-radius: 5px;
+    justify-content: space-between;
         
 }
 
@@ -193,7 +353,7 @@ tfoot th {
 }
 
 #regr-ingre {
-    color: #5D3A3A;
+    color: #8a0029;
 }
 
 .porcentajes-descrip{
@@ -344,7 +504,7 @@ nav {
     margin-left: -5px;
 }
 
-.eccion-tarjeta ul {
+.seccion-tarjeta ul {
     list-style: none;
     padding: 0;
 }
@@ -361,6 +521,7 @@ nav {
 .titulo-tarj {
     color: #4A5E8A;
     margin-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .progress-barg {
@@ -389,13 +550,4 @@ nav {
     content: " ¿Ya te vas, Senpai?";
     font-size: 0.8rem;
     color: #4A5E8A;
-}
-
-/*.seccion-tarjeta {
-    display: none; /* Esto apaga todas las secciones por defecto */
-
-
-/* Esta clase la pondrás manualmente a la sección que estés diseñando */
-/*.en-desarrollo {
-    display: block !important; 
 }

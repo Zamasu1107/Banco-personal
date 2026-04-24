@@ -15,6 +15,14 @@
             <h2>Ingresos Mensuales</h2>
             <p>Ve todos tus ingresos del mes</p> 
             </a> 
+
+            <div class="despegable-menu">
+                <form action="ingresos.html" method="post" class="input-ingre">
+                    <label for="Sueldo">Sueldo:</label>
+                    <input type="number" id="sueldo" name="Sueldo" placeholder="Ingrese su paga" min="1">
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
         </div>
         <br>
         <div id="card-cajas-ahorros" class="button">
@@ -29,6 +37,37 @@
             <h2>Gastos del Mes</h2>
             <p>Ve tus gastos programados del mes</p> 
             </a>
+            <div class="despegable-menu">
+                <form action="gastos.html" method="post">
+                    <label for="gasto">Gasto:</label>
+                        <input type="text" name="gasto" id="gast-nuevo" placeholder="Ingrese tipo de gasto">
+                    <label for="monto">Monto:</label>
+                        <input type="number" name="monto" id="monto-gas" min="1">
+                        
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="metodo" value="contado" checked>
+                                <span>Contado</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="metodo" value="msi">
+                                <span>MSI</span>
+                            </label>
+                        </div>
+
+                    <label for="tipo-gas">Tipo:</label>
+                        <input list="tarjetas" name="tipo-gas" id="tipo-gasto">
+                        <datalist id="tarjetas">
+                            <option value="Nu"></option>
+                            <option value="BBVA"></option>
+                            <option value="Banamex"></option>
+                            <option value="Sears"></option>
+                            <option value="Otros"></option>
+                        </datalist>
+                    
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
         </div>
     </body>
 </html>
