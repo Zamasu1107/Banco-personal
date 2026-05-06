@@ -86,13 +86,25 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-#card-ingreso input[type="submit"] {
-    background-color: #C24641;
-    color: white;
+#card-ingreso input[type="submit"]:hover {
+    transform: translateY(4px);
+    background-color: #8B4513;
+    box-shadow: 0 0px 0px #6c350f;
 }
 
-#card-ingreso input[type="submit"]:hover {
-    background-color: #8B4513; /* Cambia a café al pasar el mouse */
+#card-ingreso input[type="submit"] {
+    width: 60%;
+    margin: 15px auto 0;
+    padding: 12px;
+    background-color: #C24641;
+    color: white; 
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #9c3734;
+    transition: all 0.2s ease;
 }
 
 .despegable-menu {
@@ -120,13 +132,8 @@ input[type="submit"] {
 
 /* Si está en la card de Raphtalia */
 #card-ingreso .abrir-menu img:hover {
-    border-color: #8B4513;
-    background: rgba(139, 69, 19, 0.1);
-}
-
-#card-gastos .abrir-menu img:hover {
-    border-color: #E87A90;
-    background: rgba(232, 122, 144, 0.1);
+    filter: drop-shadow(0px 0px 8px #943f03);
+    transform: scale(1.2);
 }
 
 #card-cajas-ahorros {
@@ -140,6 +147,78 @@ input[type="submit"] {
     margin: auto;
     width: 65%;
 }
+
+/* Contenedor del formulario en Cajitas */
+#subMenu2 form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Estilo de los Labels */
+#subMenu2 label {
+    color: #888888; /* Gris metálico tenue */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 5%; /* Indentación alineada con inputs */
+}
+
+/* Estilo de los Inputs (Nombre, Descripción, Meta, Porcentaje) */
+#subMenu2 input[type="text"],
+#subMenu2 input[type="number"] {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 15px;
+    background-color: #0D0F12; /* Color de fondo profundo */
+    border: 1px solid #2E4D32; /* Verde capa oscuro */
+    border-radius: 4px;
+    color: #E0E0E0; /* Texto gris claro */
+    font-family: 'Roboto Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al seleccionar el input (Gema del Escudo) */
+#subMenu2 input:focus {
+    outline: none;
+    border-color: #2ECC71; /* Brillo verde esmeralda */
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+#crearCaja {
+    width: 60%;
+    margin: 15px auto 0;
+    padding: 12px;
+    background-color: #2ECC71; /* Verde esmeralda */
+    color: #0D0F12; /* Texto oscuro para contraste */
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #1E8449; /* Sombra sólida verde oscuro */
+    transition: all 0.2s ease;
+}
+
+#crearCaja:hover {
+    background-color: #27AE60;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #1E8449;
+}
+
+#crearCaja:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #1E8449;
+}
+
+/* Ejemplo para Naofumi: que brille al pasar el mouse */
+#card-cajas-ahorros .abrir-menu img:hover {
+    filter: drop-shadow(0px 0px 8px #2ECC71);
+    transform: scale(1.2);
+}
+
 
 #card-gastos {
     background: #4A5E8A; /* Azul uniforme */
@@ -172,6 +251,26 @@ input[type="submit"] {
     color: white;
     box-shadow: 3px 3px 0px #E87A90; /* Sombra estilo sticker */
     grid-column: span 2; /* El botón de enviar ocupa todo el ancho abajo */
+}
+
+#card-gastos input[type="submit"] {
+    width: 60%;
+    margin: 15px auto 0;
+    padding: 12px;
+    background-color: #4A5E8A;
+    color: white; 
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #E87A90;
+    transition: all 0.2s ease;
+}
+
+#card-gastos .abrir-menu img:hover {
+    filter: drop-shadow(0px 0px 8px #E87A90);
+    transform: scale(1.2);
 }
 
 .radio-group {
@@ -235,6 +334,14 @@ input[type="submit"] {
     transition: 0.3s; 
 }
 
+.abrir-menu img {
+    background: none; /* Quita el fondo blanco */
+    border: none;
+    width: 40px;      /* Tamaño más discreto */
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Sombra para dar profundidad */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
 form {
     display: flex;
@@ -284,10 +391,10 @@ h2 {
 }
 
 h3 {
-    color: #2ECC71;
-    margin-top: 0;
-    text-transform: uppercase;
+    margin: 0;               /* Quita el margen del título para que no empuje */
     font-size: 1.1rem;
+    color: #2ECC71;
+    text-transform: uppercase;
 }
 
 p {
@@ -371,6 +478,55 @@ tfoot th {
     color: #8a0029;
 }
 
+.boton-cierre-mes {
+    /* Posicionamiento y Centrado */
+    display: block;
+    margin: 30px auto; /* Espacio generoso entre las tablas */
+    padding: 15px 35px;
+    
+    /* Colores y Estilo Raphtalia */
+    background-color: #5D3A3A; /* Marrón cuero */
+    color: #F5F5DC;           /* Crema del vestido para el texto */
+    font-family: 'Crimson Text', serif; /* Fuente tipo libro de aventuras */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    /* Bordes Estilo Armadura */
+    border: 2px solid #8B4513;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    /* Sombra para dar volumen */
+    box-shadow: 0 4px 0px #3E2723, /* Sombra sólida (grosor del botón) */
+                0 6px 15px rgba(0,0,0,0.3);
+    
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.boton-cierre-mes:hover {
+    background-color: #7A4A4A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #3E2723, 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Efecto de Presionado (Click) - Como si se hundiera */
+.boton-cierre-mes:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #3E2723;
+    background-color: #C24641; /* Brillo rojo de los ojos al ejecutar la acción */
+}
+
+/* Detalle extra: Un pequeño icono antes del texto
+.boton-cierre-mes::before {
+    content: "⚔️";  O un icono de escudo/espada
+    margin-right: 10px;
+    filter: sepia(1);
+}*/
+
 /*--------------------------------------------Diseño de pag de Cajas-------------------------------------------------------*/
 .porcentajes-descrip{
     display: flex;
@@ -385,6 +541,8 @@ tfoot th {
 }
 
 .total-caja {
+    display: flex;
+    align-items: right;
     color: #E0E0E0; /* Gris metálico */
     font-size: 0.90rem;
     font-weight: bold;
@@ -403,13 +561,23 @@ tfoot th {
     border: 1px solid #2E4D32;
     border-left: 4px solid #2ECC71;
     border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 12px 20px;     /* Menos espacio arriba y abajo */
+    min-height: auto;        /* Deja que el contenido defina la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    box-sizing: border-box;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 50%; /* Ancho fijo para consistencia */
+    width: 100%; /* Ancho fijo para consistencia */
     min-height: 35px;
+    cursor: pointer;           /* Indica que toda la caja es clickable */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    display: block;            /* Asegura que ocupe todo el ancho disponible */
 }
+
 
 .cajas-diseño {
     background: #1A1C20;
@@ -438,23 +606,70 @@ tfoot th {
 
 .progress-fill {
     background: linear-gradient(90deg, #1E8449, #2ECC71);
-    width: 50%;
+    width: 0%;
     height: 10px;
 }
 
-.despegable {
-    display: none;
+.despegable-menu.open {
+    max-height: 0 500px; /* Suficiente para el contenido de tus metas[cite: 3] */
+    margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid rgba(46, 204, 113, 0.2); /* Una línea sutil de separación */
-    margin-top: 10px;
-}
-
-.cajas:hover .despegable{
-   display: block;
+    border-top: 1px dashed #2E4D32;
+    opacity: 1;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    overflow: hidden;
+    opacity: 0;
 }
 
 #regr-cajas {
     color: #2ECC71;
+}
+
+.container {
+    display: flex;
+    align-items:flex-start; /* Alinea al inicio para que las cajas no se estiren verticalmente */
+    gap: 20px; 
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box; /* Crucial para que el padding no sume al ancho total */
+}
+
+.contenedor-cajas {
+    flex: 0 0 60%; /* Las cajas ocuparán exactamente el 40% del ancho */
+    z-index: 2;    /* Asegura que las cajas estén "encima" en caso de roce */
+}
+
+.contenedor-grafica {
+    flex: 0 0 40%; /* La gráfica ocupará el 60% restante */
+    height: 400px; /* Altura controlada */
+    position: relative;
+    background: #1A1C20;
+    border: 2px solid #2E4D32;
+    border-radius: 12px;
+    overflow: hidden; /* Evita que el canvas se sobreponga a las cajas */
+}
+
+#balance-total-container {
+    text-align: center;
+    margin-top: 10px; /* Lo separa de las etiquetas de la gráfica */
+    padding: 10px;
+    border-top: 1px dashed #2E4D32; /* Línea divisoria sutil */
+    background: rgba(46, 204, 113, 0.05); /* Un brillo muy leve al fondo */
+}
+
+.label-total {
+    color: #888888; /* Gris tenue para que no compita con el monto */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#monto-total {
+    color: #2ECC71; /* Verde esmeralda brillante */
+    font-size: 2.2rem;
+    margin: 5px 0;
+    text-shadow: 0 0 15px rgba(46, 204, 113, 0.6); /* El efecto de brillo es clave */
+    letter-spacing: 1px;
 }
 
 /*--------------------------------------------Diseño de pag de Gastos-------------------------------------------------------*/

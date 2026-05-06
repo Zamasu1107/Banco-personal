@@ -17,7 +17,7 @@
             </a> 
 
             <div class="abrir-menu">
-                <img src="img/descarga.png" onclick="toggleMenu('subMenu')">
+                <img src="img/raphtalia.png" onclick="toggleMenu('subMenu')">
                 <div class="despegable-menu" id="subMenu">
                     <form action="ingresos.html" method="post" class="input-ingre" id="ingre-form">
                         <label for="Sueldo">Sueldo:</label>
@@ -33,6 +33,27 @@
             <h2>Cajitas y metas de ahorro</h2>
             <p>Ve tus apartados y tus objetivos</p> 
             </a>
+
+            <div class="abrir-menu">
+                <img src="img/ChatGPT Image 5 may 2026, 07_40_53 p.m..png" onclick="toggleMenu('subMenu2')">
+                <div class="despegable-menu" id="subMenu2">
+                    <form action="cajas.html" method="post" id="caja-form">
+                        <label for="Nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="Nombre" placeholder="Ej: Figura de Anime">
+
+                        <label for="Descripcion">Descripcion:</label>
+                        <input type="text" id="descripcion" name="Descripcion" placeholder="Ej: Ahorro para figura de anime">
+
+                        <label for="Meta">Meta:</label>
+                        <input type="number" id="meta" name="Meta" placeholder="Ej: 5,000" min="1">
+
+                        <label for="Porcentaje">Porcentaje:</label>
+                        <input type="number" id="porcentaje" name="Porcentaje" placeholder="Ej: .20% de tu dinero" step="any">
+
+                        <input type="submit" value="Crear Cajita" id="crearCaja">
+                    </form>
+                </div>
+            </div>
         </div>
         <br>
         <div id="card-gastos" class="button">
@@ -41,8 +62,8 @@
             <p>Ve tus gastos programados del mes</p> 
             </a>
             <div class="abrir-menu">
-                <img src="img/nu.png" alt="" onclick="toggleMenu('subMenu2')">
-                <div class="despegable-menu open" id="subMenu2">
+                <img src="img/ChatGPT Image 5 may 2026, 07_54_06 p.m..png" alt="" onclick="toggleMenu('subMenu3')">
+                <div class="despegable-menu" id="subMenu3">
                     <form action="gastos.html" method="post">
                         <label for="gasto">Gasto:</label>
                             <input type="text" name="gasto" id="gast-nuevo" placeholder="Ingrese tipo de gasto">
