@@ -22,7 +22,7 @@
                     <form action="ingresos.html" method="post" class="input-ingre" id="ingre-form">
                         <label for="Sueldo">Sueldo:</label>
                         <input type="number" id="sueldo" name="Sueldo" placeholder="Ingrese su paga" min="1">
-                        <input type="submit" value="Enviar" id="guardarSueldo">
+                        <input type="submit" value="Guardar sueldo" id="guardarSueldo">
                     </form>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="abrir-menu">
                 <img src="img/ChatGPT Image 5 may 2026, 07_54_06 p.m..png" alt="" onclick="toggleMenu('subMenu3')">
                 <div class="despegable-menu" id="subMenu3">
-                    <form action="gastos.html" method="post">
+                    <form id="gasto-form">
                         <label for="gasto">Gasto:</label>
                             <input type="text" name="gasto" id="gast-nuevo" placeholder="Ingrese tipo de gasto">
                         <label for="monto">Monto:</label>
@@ -83,11 +83,11 @@
 
                             <div id="contenedor-meses" style="display: none;">
                                 <label for="cantidad-meses">¿A cuántos meses?:</label>
-                                <input type="number" id="cantidad-meses" min="1" placeholder="Ej. 12">
+                                <input type="number" id="meses" name="cantidad-meses" min="1" placeholder="Ej. 12">
                             </div>
 
                         <label for="tipo-gas">Tipo:</label>
-                            <input list="tarjetas" name="tipo-gas" id="tipo-gasto">
+                            <input type="text" list="tarjetas" name="tipo-gas" id="tipo-gasto" required>
                             <datalist id="tarjetas">
                                 <option value="Nu"></option>
                                 <option value="BBVA"></option>
@@ -96,7 +96,7 @@
                                 <option value="Otros"></option>
                             </datalist>
                         
-                        <input type="submit" value="Enviar">
+                        <input type="submit" value="Crear Gasto" id="guardarGasto">
                     </form>
                 </div>
             </div>

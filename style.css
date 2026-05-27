@@ -26,6 +26,7 @@
     background-size: 40px 40px; /* Crea un efecto de puntos o cuadrícula muy suave */
     color: #2D2930;
     min-height: 100vh;
+    overflow-x: auto;
 }
 
 /*--------------------------------------------Diseños de pag Indice Tarjetas-------------------------------------------------------*/
@@ -414,12 +415,16 @@ p {
     font-size: 1.2rem;
 }
 
-#rojo {
+.rojo {
     color: rgba(255, 0, 38, 0.87);
 }
 
-#verde {
+.verde {
     color: #2ecc70b1;
+}
+
+.MSI {
+    font-size: 1.2rem;
 }
 
 .descrip-deuda {
@@ -428,14 +433,6 @@ p {
     margin-top: 5px;
     font-size: 1.2rem;
     padding-top: 10px;
-}
-
-.descrip-g {
-    display: flex;
-    border-bottom: 2px solid rgba(255, 0, 0, 0.392);
-    border-radius: 5px;
-    justify-content: space-between;
-        
 }
 
 /*--------------------------------------------Diseño de pag de Ingresos-------------------------------------------------------*/
@@ -520,13 +517,6 @@ tfoot th {
     background-color: #C24641; /* Brillo rojo de los ojos al ejecutar la acción */
 }
 
-/* Detalle extra: Un pequeño icono antes del texto
-.boton-cierre-mes::before {
-    content: "⚔️";  O un icono de escudo/espada
-    margin-right: 10px;
-    filter: sepia(1);
-}*/
-
 /*--------------------------------------------Diseño de pag de Cajas-------------------------------------------------------*/
 .porcentajes-descrip{
     display: flex;
@@ -557,6 +547,7 @@ tfoot th {
 }
 
 .cajas {
+    position: relative;
     background: #1A1C20;
     border: 1px solid #2E4D32;
     border-left: 4px solid #2ECC71;
@@ -672,6 +663,34 @@ tfoot th {
     letter-spacing: 1px;
 }
 
+.borrar-cajita {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: 1px solid rgba(231, 76, 60, 0.3); /* Rojo suave */
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10; /* Asegura que esté por encima de todo */
+}
+
+.borrar-cajita:hover {
+    background: #e74c3c;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+    transform: scale(1.1);
+}
+
+
 /*--------------------------------------------Diseño de pag de Gastos-------------------------------------------------------*/
 nav {
     max-width: 100%;
@@ -690,22 +709,38 @@ nav {
 }
 
 .menu-horiz > li > a {
-    display: block;
+    display: inline-block;
     background-color: #4A5E8A; /* Azul uniforme */
     color: white;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 20px 20px 20px 20px; /* Corte asimétrico juguetón */
+    border-radius: 50px; /* Estilo cápsula que ya tienes */
     border: 2px solid #2D2930;
     font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 4px 4px 0px #E87A90; /* Sombra rosa sólida */
+    position: relative;
+    
+    /* Sombra sólida inicial (Nagatoro Style) */
+    box-shadow: 0px 4px 0px #E87A90; 
+    
+    /* Transición suave para que no brinque */
+    transition: all 0.2s ease-in-out;
 }
 
-.menu-horiz > li:hover {
-    background-color: #E87A90; /* Cambia a rosa al pasar el mouse */
-    box-shadow: 4px 4px 0px #4A5E8A; /* La sombra cambia a azul */
-    transform: translateY(-5px);
+.menu-horiz li a:hover {
+    background-color: #E87A90; /* Cambia a rosa */
+    
+    /* Lo levantamos un poco */
+    transform: translateY(-4px); 
+    
+    /* Aumentamos la sombra hacia abajo para compensar el levantamiento */
+    /* Así la base de la sombra parece quedarse en el mismo sitio */
+    box-shadow: 0px 8px 0px #4A5E8A; 
+}
+
+.menu-horiz li a:active {
+    /* Se hunde completamente */
+    transform: translateY(2px);
+    box-shadow: 0px 0px 0px #4A5E8A;
 }
 
 .contenedor {
@@ -741,6 +776,16 @@ nav {
     padding: 0;
 }
 
+.seccion-tarjeta {
+    display: none; /* Todas apagadas */
+}
+
+/* Mostramos si es el target o si tiene la clase activa */
+.seccion-tarjeta:target,
+.seccion-tarjeta.activa {
+    display: block;
+}
+
 .seccion-tarjeta li {
     background: white;
     border-left: 5px solid #E87A90;
@@ -749,6 +794,7 @@ nav {
     border-radius: 0 10px 10px 0;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
 }
+
 
 .titulo-tarj {
     color: #4A5E8A;
@@ -764,11 +810,28 @@ nav {
     overflow: hidden;
 }
 
+#gastos-totalesf {
+    background: linear-gradient(90deg, #4A5E8A, #E87A90);
+    height: 100%;
+    border-radius: 8px;
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación "bouncy" */
+}
+
 .progress-fillg {
     background: linear-gradient(90deg, #4A5E8A, #E87A90);
     height: 100%;
     border-radius: 8px;
-    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación "bouncy" */
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.progress-fillf {
+    background: linear-gradient(90deg, #4A5E8A, #E87A90);
+    height: 100%;
+    border-radius: 8px;
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #regr-gasto {
@@ -782,4 +845,373 @@ nav {
     content: " ¿Ya te vas, Senpai?";
     font-size: 0.8rem;
     color: #4A5E8A;
+}
+
+.seccion-gastos-timeline {
+    width: 100%;
+    overflow-x: auto; /* Solo esta parte tendrá scroll horizontal */
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    /* Estilo Nagatoro: scrollbar personalizada */
+    scrollbar-width: thin;
+    scrollbar-color: #4A5E8A #1A1C20;
+}
+
+#timeline {
+    display: flex; /* Cambiar flex por inline-flex ayuda a que el fondo crezca con los hijos */
+    min-width: 100vw;
+    position: relative;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start;
+    width: max-content; /* Obliga al div a ser tan ancho como todas las tarjetas juntas */  
+    height: 450px; 
+    padding: 0 150px;
+    
+}
+
+/* La línea central negra */
+#timeline::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to right, #2D2930, #4A5E8A);
+    box-shadow: 0 0 5px rgba(74, 94, 138, 0.5);
+    height: 3px;
+    left: 0; 
+    width: 100%; /* Permite que el ancho lo definan los extremos */
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.child {
+    position: relative;
+    min-width: 220px;
+    opacity: 0; /* Estado inicial invisible */
+    transform: translateX(50px); /* Desplazado a la derecha */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 2;
+}
+
+/* El punto rosa (Gema de Nagatoro) */
+.child::before {
+    content: '';
+    position: absolute;
+    background: #E87A90;
+    border: 2px solid #2D2930;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* Zig-Zag: Impares arriba, Pares abajo */
+.child:nth-child(odd) .content {
+    transform: translateY(-120px); /* Sube la tarjeta */
+}
+
+.child:nth-child(even) .content {
+    transform: translateY(120px); /* Baja la tarjeta */
+}
+
+.content {
+    width: 200px;
+    padding: 15px;
+    color: #2D2930;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #4A5E8A;
+    border-radius: 15px;
+    box-shadow: 4px 4px 0px #E87A90;
+    text-align: center;
+    white-space: normal; /* Permite que el texto rompa línea dentro */
+}
+
+/* Animaciones */
+._show {
+    opacity: 1;
+    visibility: visible;
+    animation: __show 0.8s cubic-bezier(.17, .88, .32, 1.28) forwards;
+}
+
+._hide {
+    opacity: 0;
+    visibility: hidden;
+    animation: __hide 0.5s ease forwards;
+}
+
+@keyframes __show {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes __hide {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-50px); opacity: 0; }
+}
+
+.timeline-month {
+    background: #6a5acd; /* Un morado tipo Raphtalia */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 40px auto 20px auto;
+    font-weight: bold;
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.formulario-gasto {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 3px solid #2D2930; /* Borde oscuro tipo dibujo */
+    border-radius: 20px;
+    padding: 25px;
+    width: 450px;
+    margin: 20px auto;
+    box-shadow: 8px 8px 0px #E87A90; /* Sombra rosa sólida característica */
+    position: relative;
+}
+
+/* Título del Formulario */
+.formulario-gasto h2 {
+    color: #4A5E8A; /* Azul Nagatoro */
+    font-family: 'Comic Sans MS', 'Verdana', sans-serif; /* Un toque más informal */
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.formulario-gasto label {
+    display: block;
+    color: #2D2930;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.formulario-gasto input, 
+.formulario-gasto select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #4A5E8A;
+    border-radius: 10px;
+    background: #FDFBFF;
+    color: #2D2930;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.formulario-gasto input:focus {
+    border-color: #E87A90; /* Cambia a rosa al escribir */
+    background: #FFF;
+}
+
+.btn-añadir {
+    width: 100%;
+    background-color: #E87A90;
+    color: white;
+    border: 2px solid #2D2930;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 0px #4A5E8A; /* Sombra azul sólida */
+    transition: all 0.2s ease;
+}
+
+.btn-añadir:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 0px #4A5E8A;
+}
+
+.btn-añadir:active {
+    transform: translateY(2px);
+    box-shadow: 0px 0px 0px #4A5E8A;
+}
+
+.contenedor-btn {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;
+}
+
+.btn-pagar {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 30px auto; /* Centrado abajo */
+    background-color: #E87A90; /* Rosa Nagatoro */
+    color: white;
+    border: 3px solid #2D2930; /* Borde de dibujo manga */
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 5px 0px #4A5E8A; /* Sombra azul sólida */
+    transition: all 0.2s ease;
+}
+
+.btn-pagar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 0px #4A5E8A;
+    background-color: #f28bA1; /* Un rosa un poco más brillante */
+}
+
+.btn-pagar:active {
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px #4A5E8A;
+}
+
+.child.proxima .content {
+    border-color: #E87A90;
+    box-shadow: 4px 4px 0px #E87A90;
+}
+
+.child.proxima::before {
+    background: #E87A90; /* El punto de la línea también cambia */
+    box-shadow: 0 0 10px #E87A90;
+}
+
+/* Estado: Urgente (2 días o menos) */
+.child.urgente .content  {
+    border-color: #C24641;
+    box-shadow: 4px 4px 15px rgba(194, 70, 65, 0.4); /* Resplandor de alerta */
+    background: rgba(194, 70, 65, 0.05); /* Un tinte leve al fondo */
+}
+
+.child.urgente::before {
+    background: #C24641;
+    animation: pulso-alerta 1.5s infinite; /* Animación de pulso para lo urgente */
+}
+
+@keyframes pulso-alerta {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Estado Próximo: Rosa Nagatoro */
+.chips-proxima {
+    border-color: #E87A90 !important;
+    box-shadow: 0 0 8px rgba(232, 122, 144, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Estado Urgente: Rojo Alerta */
+.chips-urgente {
+    border-color: #C24641 !important;
+    background-color: rgba(194, 70, 65, 0.05); /* Tinte leve */
+    animation: latido-chip 1.5s infinite;
+}
+
+@keyframes latido-chip {
+    0% { box-shadow: 4px 4px 0px rgba(194, 70, 65, 0.5); }
+    50% { box-shadow: 4px 4px 15px rgba(194, 70, 65, 0.8); }
+    100% { box-shadow: 4px 4px 0px rgba(194, 70, 65, 0.5); }
+}
+
+.header-gasto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* --- LOGICA DEL CHECKBOX PERSONALIZADO --- */
+.checkbox {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+/* Ocultamos el checkbox original por completo */
+.checkbox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* El nuevo cuadro/círculo que diseñaremos */
+.custom-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    background-color: #FDFBFF;
+    border: 2px solid #2D2930;
+    border-radius: 8px; /* Bordes ligeramente curvos */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Cuando pases el mouse encima */
+.checkbox:hover input ~ .custom-checkmark {
+    background-color: rgba(232, 122, 144, 0.1); /* Brillo rosa tenue */
+    border-color: #E87A90;
+}
+
+/* CUANDO ESTÁ SELECCIONADO (CHECKED) */
+.checkbox input:checked ~ .custom-checkmark {
+    background-color: #E87A90; /* Rosa característico */
+    border-color: #2D2930;
+    box-shadow: 2px 2px 0px #4A5E8A;
+}
+
+/* El icono de la palomita adentro (Checkmark) usando CSS puro */
+.custom-checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Mostramos la palomita blanca al activarse */
+.checkbox input:checked ~ .custom-checkmark::after {
+    display: block;
+}
+
+.descrip-g {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide la tarjeta exactamente a la mitad */
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center; /* Centra verticalmente ambos bloques */
+    border-bottom: 2px solid rgba(255, 0, 0, 0.392);
+    border-radius: 5px;
+}
+
+/* Estilo para destacar el monto que vas a liquidar */
+.monto-principal-contenedor {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #4A5E8A; /* Tu azul uniforme de Nagatoro */
+}
+
+/* Estilo para los datos históricos o secundarios */
+.montos-secundarios-contenedor {
+    display: flex;
+    flex-direction: column; /* Los apila uno abajo del otro */
+    gap: 4px;
+    text-align: right; /* Alineación elegante al lado opuesto */
+    font-size: 0.9rem;
+    color: #555555;
 }

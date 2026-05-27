@@ -20,9 +20,9 @@
         </nav>
 
         <main id="paginas-totales">
-            <section id="vista-general" class="seccion-tarjeta">
+            <section id="vista-general" class="seccion-tarjeta activa">
                 <h2 class="titulo-gast">Resumen de tus gastos</h2>
-                <p id="deuda-total">3400/7400$</p>
+                <p id="deuda-total"></p>
 
                 <div class="progress-barg" id="gastos-totales">
                     <div class="progress-fillg" id="gastos-totalesf">  
@@ -30,412 +30,148 @@
                 </div>
 
                 <div class="contenedor">
-                    <div class="chips">
+                    <div class="chips" id="chip-Banamex">
                         <img src="img/banamex.jpg" width="70" height="70">
                         <span>Banamex</span>
                     </div>
-                    <div class="chips">
+                    <div class="chips" id="chip-BBVA">
                         <img src="img/bbva.jpg" width="70" height="70">
                         <span>BBVA</span>
                     </div>
-                    <div class="chips">
+                    <div class="chips" id="chip-Nu">
                         <img src="img/nu.png" width="70" height="70">
                         <span>Nu</span>
                     </div>
-                    <div class="chips"> 
+                    <div class="chips" id="chip-Sears"> 
                         <img src="img/sears.png" width="70" height="70">
                         <span>Sears</span>
                     </div>
+                    <div class="chips" id="chip-Otros">  
+                        <img src="img/raphtalia.png" width="70" height="70">
+                        <span>Otros</span>
+                    </div>
                 </div>
+
+                <div class="formulario-gasto">
+                    <h2>Ingrese un nuevo evento</h2>
+                    <form method="post" id="evento-form">
+                        <label for="nombre">Nombre:</label>
+                            <input type="text" name="nombre" id="nombr-nuevo" placeholder="Ingrese el nombre del evento" required>
+                        <label for="descripcion">Descripcion:</label>
+                            <input type="text" name="descripcion" id="descr-event" placeholder="Ingrese una descripcion corta del evento" required>
+                        <label for="fecha">Fecha:</label>
+                            <input type="date" name="fecha" id="fecha-event" required>
+                        <label for="tipo-gas">Tipo:</label>
+                            <input list="tarjetas" name="tipo-gas" id="tipo-gasto">
+                            <datalist id="tarjetas">
+                                <option value="Nu">
+                                <option value="BBVA">
+                                <option value="Banamex">
+                                <option value="Sears">
+                                <option value="Otros">
+                            </datalist>
+                        <input type="submit" value="Enviar" class="btn-añadir">
+                    </form>
+                </div>
+
+                <div class="seccion-gastos-timeline">
+                    <div id="timeline"></div>
+                </div>
+
             </section>
             <br>
-            <section id="vista-nu" class="seccion-tarjeta ">
+            <section id="vista-nu" class="seccion-tarjeta">
                 <h2 class="titulo-gast">Resumen de Nu</h2>
-                <div class="descripcion-bar">
-                    <span id="rojo">Deuda Mensual total: $1867.67</span>
-                    <span id="verde">Credito total: $12,000</span>
+                <span id="duedaTotal-Nu" class="rojo MSI"></span>
+                <div class="descripcion-bar"> 
+                    <span id="duedaTotalD-Nu" class="rojo"></span>
+                    <span class="verde">Credito total: $12,000</span>
                 </div>
 
-                <div class="progress-barg barra-deudas">
-                        <div class="progress-fillg barra-deudasf">  
-                        </div>
+                <div class="progress-barg" id="barraDeudas-Nu">
                     </div>
                 
-                <ul>
-                    <li>
-                        <h3 class="titulo-tarj">Ropa De Jeans</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $3770.22</span>
-                            <span>Saldo a Meses: $628.37</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>4/6 (Junio)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Predur</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,020</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">GamePass</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $219</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>Indefinido</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
+                <ul class="contenedor-Nu">
                 </ul>
+
+                <div class="contenedor-btn">
+                <button class="btn-pagar" id="btn-Nu" onclick="event.stopPropagation(); pagarGastos()">Pagar Gastos</button>
+                </div>
             </section>
 
             <section id="vista-bbva" class="seccion-tarjeta"> 
                 <h2 class="titulo-gast">Resumen de BBVA</h2>
-                <div class="descripcion-bar">
-                    <span id="rojo">Deuda Mensual total: $12,812.74</span>
-                    <span id="verde">Credito total: $16,100</span>
+                <span id="duedaTotal-BBVA" class="rojo MSI"></span>
+                <div class="descripcion-bar"> 
+                    <span id="duedaTotalD-BBVA" class="rojo"></span>
+                    <span class="verde">Credito total: $16,100</span>
                 </div>
 
-                <div class="progress-barg barra-deudas">
-                        <div class="progress-fillg barra-deudasf">  
-                        </div>
+                <div class="progress-barg" id="barraDeudas-BBVA">
                     </div>
                 
-                <ul>
-                    <li>
-                        <h3 class="titulo-tarj">Motherboard Tuf Gaming</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $4,887</span>
-                            <span>Saldo a Meses: $543</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>5/9 (Agosto)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Memorias Ram</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $4,485</span>
-                            <span>Saldo a Meses: $299</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>5/15 (Febrero)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Aseguradora</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,754.30</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Fan</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $207.35</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Crunchyroll</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $159</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Maquillaje</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $500</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Skincare</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,720</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Cashi Super</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $2,510.83</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
+                <ul class="contenedor-BBVA">
                 </ul>
+                <div class="contenedor-btn">
+                <button class="btn-pagar" id="btn-BBVA" >Pagar Gastos</button>
+                </div>
             </section>
 
             <section id="vista-banamex" class="seccion-tarjeta">
                 <h2 class="titulo-gast">Resumen de Banamex</h2>
-                <div class="descripcion-bar">
-                    <span id="rojo">Deuda Mensual total: $8,558.15</span>
-                    <span id="verde">Credito total: $8,900</span>
+                <span id="duedaTotal-Banamex" class="rojo MSI"></span>
+                <div class="descripcion-bar"> 
+                    <span id="duedaTotalD-Banamex" class="rojo"></span>
+                    <span class="verde">Credito total: $8,900</span>
                 </div>
 
-                <div class="progress-barg barra-deudas">
-                        <div class="progress-fillg barra-deudasf">  
-                        </div>
+                <div class="progress-barg" id="barraDeudas-Banamex">
                     </div>
                 
-                <ul>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,206.55</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Gasolina</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $500</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,666.70</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Gasolina</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $498.80</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $235</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $963.25</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $1,155</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <h3 class="titulo-tarj">Costco</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $4,202.85</span>
-                            <span>Saldo a Meses: N/A</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>1/1 (Abril)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
+                <ul class="contenedor-Banamex">
                 </ul>
+                <div class="contenedor-btn">
+                <button class="btn-pagar" id="btn-Banamex">Pagar Gastos</button>
+                </div>
             </section>
 
             <section id="vista-sears" class="seccion-tarjeta">
                 <h2 class="titulo-gast">Resumen de Sears</h2>
-                <div class="descripcion-bar">
-                    <span id="rojo">Deuda Mensual total: $7,929.23</span>
-                    <span id="verde">Credito total: $16,000</span>
+                <span id="duedaTotal-Sears" class="rojo MSI"></span>
+                <div class="descripcion-bar"> 
+                    <span id="duedaTotalD-Sears" class="rojo"></span>
+                    <span class="verde">Credito total: $16,000</span>
                 </div>
 
-                <div class="progress-barg barra-deudas">
-                        <div class="progress-fillg barra-deudasf">  
-                        </div>
+                <div class="progress-barg" id="barraDeudas-Sears">
                     </div>
                 
-                <ul>
-                    <li>
-                        <h3 class="titulo-tarj">Celulares</h3>
-                        <div class="descrip-g">
-                            <span>Monto: $16,000</span>
-                            <span>Saldo a Meses: $889</span>
-                        </div>
-                        <div class="descrip-deuda">
-                            <span>Tiempo Restante:</span>
-                            <span>11/18 (Noviembre)</span>
-                        </div>
-
-                        <div class="progress-barg">
-                            <div class="progress-fillg">  
-                            </div>
-                        </div>
-                    </li>
+                <ul class="contenedor-Sears">
                 </ul>
+                <div class="contenedor-btn">
+                <button class="btn-pagar" id="btn-Sears">Pagar Gastos</button>
+                </div>
             </section>
 
             <section id="vista-otros" class="seccion-tarjeta">
                 <h2 class="titulo-gast">Resumen de otros</h2>
+                <span id="duedaTotal-Otros" class="rojo MSI"></span>
+                <div class="descripcion-bar"> 
+                    <span id="duedaTotalD-Otros" class="rojo"></span>
+                    <span class="verde">Credito total: $16,000</span>
+                </div>
+
+                <div class="progress-barg" id="barraDeudas-Otros">
+                    </div>
+                
+                <ul class="contenedor-Otros">
+                </ul>
+
+                <div class="contenedor-btn">
+                <button class="btn-pagar" id="btn-Otros">Pagar Gastos</button>
+                </div>
             </section>
         </main>
+        <script src="script.js"></script>
     </body>
 </html>

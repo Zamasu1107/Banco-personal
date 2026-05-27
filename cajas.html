@@ -12,92 +12,6 @@
 
     <div class="container">
         <div class="contenedor-cajas">
-            <div id="caja 1" class="cajas" onclick="toggleMenu('subAhorroMenu1')">
-                <h3>Gastos diarios</h3>
-
-                <div class="cajas-diseño despegable-menu" id="subAhorroMenu1" >
-                    <p class="desc-cajas">El dinero guardado para los gastos del dia a dia</p>
-                    
-                    <div class="bar-baground">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="bar-gasto"></div>
-                        </div>
-                    </div>
-                    <div class="porcentajes-descrip">
-                        <span id="porcentajeG" class="porcentaje">0%</span>
-                        <span class="total-caja" id="montoTG">Total: 0/3,000$ </span>
-                    </div>
-                </div>
-            </div>
-            <div id="caja 2" class="cajas" onclick="toggleMenu('subAhorroMenu2')">
-                <h3>Auto</h3>
-                
-                <div class="cajas-diseño despegable-menu" id="subAhorroMenu2">
-                    <p class="desc-cajas">El dinero guardado para los gastos del auto y las mejoras y servicios por hacerle</p>
-                    
-                    <div class="bar-baground">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="bar-auto"></div>
-                        </div>
-                    </div>
-                    <div class="porcentajes-descrip">
-                        <span id="porcentajeA" class="porcentaje">0%</span>
-                        <span class="total-caja" id="montoTA">Total: 0/5,000$ </span>
-                    </div>
-                </div>
-            </div>
-            <div id="caja 3" class="cajas" onclick="toggleMenu('subAhorroMenu3')">
-                <h3>Laptop</h3>
-                
-                <div class="cajas-diseño despegable-menu" id="subAhorroMenu3">
-                    <p class="desc-cajas">El dinero guardado para una nueva laptop para la escuela</p>
-                    
-                    <div class="bar-baground">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="bar-laptop"></div>
-                        </div>
-                    </div>
-                    <div class="porcentajes-descrip">
-                        <span id="porcentajeL" class="porcentaje">0%</span>
-                        <span class="total-caja" id="montoTL">Total: 0/10,000$ </span>
-                    </div>
-                </div>
-            </div>
-            <div id="caja 4" class="cajas" onclick="toggleMenu('subAhorroMenu4')">
-                <h3>Tarjeta grafica</h3>
-                
-                <div class="cajas-diseño despegable-menu" id="subAhorroMenu4">
-                    <p class="desc-cajas">El dinero guardado una nueva tarjeta de video Nvidea 5060 ti 16gb</p>
-                    
-                    <div class="bar-baground">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="bar-nvidea"></div>
-                        </div>
-                    </div>
-                    <div class="porcentajes-descrip">
-                        <span id="porcentajeNTV" class="porcentaje"></span>
-                        <span class="total-caja" id="montoTNV">Total: 0/12,500$ </span>
-                    </div>
-                </div>
-            </div>
-            <div id="caja 5" class="cajas" onclick="toggleMenu('subAhorroMenu5')">
-                <h3>Viaje a Japon</h3>
-                
-                <div class="despegable cajas-diseño despegable-menu" id="subAhorroMenu5">
-                    <p class="desc-cajas">El dinero guardado para el viaje a japon incluyendo boleto y dinero extra</p>
-                    
-                    <div class="bar-baground">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="bar-japon"></div>
-                        </div>
-                    </div>
-                    <div class="porcentajes-descrip">
-                        <span  class="porcentaje" id="porcentajeJ">0%</span>
-                        <span class="total-caja" id="montoTJ">Total: 0/80,000$ </span>
-                    </div>
-                </div>
-            </div>
-            
         </div>
         <div class="contenedor-grafica">
            <div class="chart"><canvas id="doughnut"></canvas></div>
@@ -106,13 +20,10 @@
             <h2 id="monto-total">$0.00</h2>
             </div> 
         </div>
-            
     </div>
     
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
     <script src="script.js"></script>
     
-
 </body>
 </html>
