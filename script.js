@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
 //---------------------------Codigo para ocultar y mostrar los botones radio-------------------------------------------------------------------------------------------------
 // 1. Seleccionamos los elementos que necesitamos
 const radiosMetodo = document.querySelectorAll('input[name="metodo"]');
@@ -244,7 +242,7 @@ while (dineroRestante > 0.01) {
             saldoCajitas[llave] = meta;
             nuevoExcedente += (porcionProporcional - espacio);
         } else {
-            saldoCajitas[llave] += porcionProporcional;
+            saldoCajitas[llave] = saldoActual + porcionProporcional;
         }
     });
 
@@ -553,10 +551,49 @@ let html = "";
 let ultimoMesAño = "";
 
 // 1. Filtrar y Ordenar
-const hoy = new Date().setHours(0,0,0,0);
-const eventosFuturos = datosTarj
-    .filter(d => convertirAFecha(d.fecha) >= hoy)
-    .sort((a, b) => convertirAFecha(a.fecha) - convertirAFecha(b.fecha));
+let datosActualizados = false;
+const hoyLimpio = new Date();
+hoyLimpio.setHours(0,0,0,0);
+
+datosTarj.forEach(evento => {
+    let fechaEvento = convertirAFecha(evento.fecha);
+
+    // Si la fecha del evento ya se quedó en el pasado
+    if (fechaEvento < hoyLimpio) {
+        // Magia: Le adelantamos exactamente 1 mes hacia el futuro
+        fechaEvento.setMonth(fechaEvento.getMonth() + 1);
+
+        // Reconstruimos el texto al formato DD/MM/YYYY para tu HTML
+        let dia = String(fechaEvento.getDate()).padStart(2, '0');
+        let mes = String(fechaEvento.getMonth() + 1).padStart(2, '0');
+        let año = fechaEvento.getFullYear();
+
+        evento.fecha = `${dia}/${mes}/${año}`;
+        datosActualizados = true; // Activamos la bandera de que hubo cambios
+    }
+});
+
+// Guardamos las fechas actualizadas en el disco duro para no hacer esto cada vez
+if (datosActualizados) {
+    localStorage.setItem('config-datos', JSON.stringify(datosTarj));
+}
+
+// 2. EL INTERRUPTOR: Filtramos y Ordenamos
+const eventosFuturos = datosTarj.filter(d => {
+    // Revisamos si el evento pertenece a una tarjeta real en tu base de datos
+    
+    let gastosFrescos = JSON.parse(localStorage.getItem('config_gastos')) || {};
+    let tarjetaAsociada = gastosFrescos[d.classTarjeta];
+
+    // Freno de mano: Si es una tarjeta y NO hay deudas (lista vacía), NO lo mostramos
+    if (tarjetaAsociada && tarjetaAsociada.lista.length === 0) {
+        return false; 
+    }
+
+    // Si sí hay deuda (o es otro tipo de evento), lo mostramos normal
+    return convertirAFecha(d.fecha) >= hoyLimpio;
+
+}).sort((a, b) => convertirAFecha(a.fecha) - convertirAFecha(b.fecha));
 
 let estadosBancos = {};
 
@@ -723,7 +760,7 @@ let totalgastos = JSON.parse(localStorage.getItem('config_gastos')) || {
         lista : []
     },
     Sears : { fechaCorte : 1,
-        credito : 14000,
+        credito : 16000,
         lista : []
     },
     Otros : { lista : []
@@ -966,4 +1003,3 @@ console.log(posicionGasto);
     actualizarInterfazGasto();
     actualizarDatosInicio();
 }
-
