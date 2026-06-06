@@ -159,12 +159,34 @@ if(botonCierre) {
 // 1. Capturamos el formulario del html de ingresos en una variable 
 const form = document.getElementById('ingre-form');
 
+function simularGuardado() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let randomNum = Math.random();
+
+            if(randomNum > 0.5) {
+            resolve('¡Guardado exitoso!')
+            } else {
+                reject('Error 500: Se perdió la conexión al servidor');
+            }
+        }, 2000);
+    })
+}
+
 // 2. Se crea un if para comprobar si el form existe en la pagina
 if (form) {
 // 3. Se utiliza un evento para escuchar el submit y activar la funcion
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function(event) {
     event.preventDefault(); // Evitamos que la pagina se reinicie al darle enviar
-    
+
+    const bottonGuardar = document.getElementById('guardarSueldo');
+    bottonGuardar.value = 'Guardando';
+    bottonGuardar.disabled = true;
+
+    try {
+
+    await simularGuardado();
+        
     // 4. Capturamos los datos del formulario
     let transformFormDatos = new FormData(form);
     let montoIngresado = Number(transformFormDatos.get('Sueldo'));
@@ -255,6 +277,15 @@ while (dineroRestante > 0.01) {
 
         // 11. Guardamos de vuelta en el storage los nuevos montos ya calculados
         localStorage.setItem('saldo_cajitas', JSON.stringify(saldoCajitas));
+
+    bottonGuardar.value = 'Guardar Sueldo';
+    bottonGuardar.disabled = false;
+    
+} catch (error) {
+        alert(error)
+        bottonGuardar.value = 'Guardar Sueldo';
+        bottonGuardar.disabled = false;
+    }
 
     });
 }
@@ -1003,3 +1034,4 @@ console.log(posicionGasto);
     actualizarInterfazGasto();
     actualizarDatosInicio();
 }
+
